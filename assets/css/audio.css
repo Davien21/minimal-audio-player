@@ -1,5 +1,6 @@
 body {
-	background-color: #000;
+	/*background-color: #000;*/
+	/*background: linear-gradient(-65deg, #43C6AC, #F8FFAE);*/
 }
 main {
 	width: 60%;
@@ -7,7 +8,12 @@ main {
 	position: relative;
 }
 .slider-container {
-	background-color: #fff;
+	/*background-color: #fff;*/
+
+}
+.title-div {
+	background-color: darkgray;
+    background-color: antiquewhite;
 }
 .slider-progress {
 	z-index: -1;
@@ -15,15 +21,8 @@ main {
 	height: 5px;
 	background-color: #2196F3;
 	border-radius: 3px;
-	position: absolute;top: 0;left: 0;
-
 }
-.slider-progress::before {
-	content: '';
-	position: absolute;
-	background-color: #fff;
-
-}
+ 
 .player-body {
 	/*background-color: #FFFFFF;*/
 }
@@ -32,11 +31,9 @@ main {
 	width: 100%;
 	height: 5px;
 	outline: none;
-	/*background-color: transparent;*/
+	background-color: #D8D8D8;
 	border-radius: 30px;
 	cursor: pointer;
-  	position: absolute;
-  	top: -2px;left: -2px;
 }
 #slider::-webkit-slider-thumb,#slider::-moz-range-thumb  {
 	-webkit-appearance: none;
@@ -44,8 +41,8 @@ main {
 	outline: none;
 	border:none;
 	background: #2196F3;
-	width: 15px;
-	height: 15px;
+	width: 13px;
+	height: 13px;
 	cursor: pointer;
 	/*z-index: 3;*/
 	border-radius: 50%;
@@ -74,6 +71,11 @@ main {
 .border-shadow {
 	box-shadow: 0px -0.05px 0.15px 0.15px #EAEAEA;
 }
+.tiny-svg {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
 @media screen and (max-width:399px) {
 		
 }
@@ -85,11 +87,19 @@ main {
 	
 }
 @media screen and (min-width:768px) {
-	
+	main {
+		width: 40%;
+		margin: 15% auto;
+		position: relative;
+	}
 
 }
 @media screen and (min-width:992px) {
-	
+	main {
+		width: 35%;
+		margin: 15% auto;
+		position: relative;
+	}
  	
 }	
 @media screen and (min-width:1200px) {

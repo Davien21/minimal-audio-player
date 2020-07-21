@@ -5,18 +5,34 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-		<!-- <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.css"> -->
+		<link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.css">
 		<!-- <link rel="stylesheet" type="text/css" href="./assets/css/style.css"> -->
 		<link rel="stylesheet" type="text/css" href="./assets/css/audio.css">
 	</head>
 	<body>
 		<main>
-			<div class="container-fluid player-body py-3 paper-box-shadow">
-				dc
-				<div class="row bg-success">
-					<div class="mx-auto slider-container ">
-						<input class="audio-slider absolute" id="slider" type="range" min="0" max="100" value="50">
+			<div class="container-fluid player-body  bg-white rounded paper-box-shadow">
+				<div class="row pt-2 pb-3 bg- rounded-top title-div"> 
+					<small class="track-title px-3">
+						Ed Sheeran - Give Me Love.mp3
+					</small>
+				</div>
+				<div class="row py-3">
+					<div class="col-auto play-btn" onclick="playSong(this)">
+						<img class="tiny-svg " src="./assets/imgs/play.svg">
 					</div>
+					 
+					<div class="row px-0 px-sm-3 col">
+						<span class="col-auto current-time px-2 px-sm-3">0:00</span>
+						<div class="col px-0 slider-container d-flex align-items-center">
+							<input class="audio-slider absolute" id="slider" type="range" min="0" max="100" value="0">
+						</div>
+						<span class="col-auto duration px-2 px-sm-3">0:00</span>
+					</div>
+					<div class="col-auto " onclick="showVolumeRocker()">
+						<img class="tiny-svg" src="./assets/imgs/volume.svg">
+					</div>
+					<div class="volume-slider"></div>
 				</div>
 			</div>
 		</main>

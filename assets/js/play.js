@@ -70,3 +70,4 @@ function togglePlayImg () {
         img.src = './assets/imgs/pause.svg';
     }
 }
+
