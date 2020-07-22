@@ -23,6 +23,7 @@ main {
 }
  
 .player-body {
+	position: relative;
 	/*background-color: #FFFFFF;*/
 }
 .def-slider {
@@ -35,10 +36,19 @@ main {
 	cursor: pointer;
 }
 .volume-slider {
-	max-width: 60px;
+	/*max-width: 30px;*/
 
 }
-@keyframe
+.volume-slider-container {
+	position: absolute;
+	right: -20px;
+	/*top: 0;*/
+	bottom: -70px;
+	height: 30px;
+	width: 100px;
+	transform: rotate(270deg);
+}
+/*@keyframe*/
 .def-slider::-webkit-slider-thumb,.def-slider::-moz-range-thumb  {
 	-webkit-appearance: none;
   	appearance: none;
@@ -48,7 +58,6 @@ main {
 	width: 13px;
 	height: 13px;
 	cursor: pointer;
-	/*z-index: 3;*/
 	border-radius: 50%;
 	 
 }
