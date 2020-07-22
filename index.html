@@ -11,9 +11,7 @@
 	</head>
 	<body>
 		<main>
-			<audio controls="" src="./assets/audio/Ed Sheeran - Give Me Love.mp3"></audio>
-
-			<div class="container-fluid player-body  bg-white rounded paper-box">
+			<div class="container-fluid player-body  bg-white rounded paper-box-shadow">
 				<div class="row pt-2 pb-3 bg- rounded-top title-div"> 
 					<small class="track-title px-3">
 						Press Play
@@ -23,20 +21,20 @@
 					<div class="col-auto d-flex align-items-center play-btn " onclick="playSong(this)">
 						<img class="tiny-svg " src="./assets/imgs/play.svg">
 					</div>
-					<div class="d-flex px-0 col">
+					<div class="d-flex px-0 col align-items-center">
 						<small class="col-auto current-time px-2 px-sm-3">0:00</small>
 						<div class="col px-0 slider-container d-flex align-items-center">
 							<input class="audio-slider def-slider" type="range" min="0" max="100" value="0">
 						</div>
 						<small class="col-auto duration px-2 px-sm-3">0:00</small>
 					</div>
-					<div class="col-auto  d-flex align-items-center" onclick="showVolumeRocker()">
-						<img class="tiny-svg" src="./assets/imgs/volume.svg">
-					</div>
-				</div>
-				<div class="row  paper-box volume-slider-container">
-					<div class="volume-slider px-2 d-flex align-items-center">
-						<input class="audio-slider def-slider" type="range" min="0" max="100" value="0">
+					<div class="d-flex">
+						<div class="volume-btn col-auto d-flex align-items-center"  >
+							<img class="tiny-svg" src="./assets/imgs/volume.svg">
+						</div>
+						<div class="volume-slider-div px-2 align-items-center">
+							<input class="volume-slider def-slider" type="range" min="0" max="100" value="0">
+						</div>
 					</div>
 				</div>
 			</div>

@@ -1,11 +1,12 @@
 let slider_input = document.querySelector('input.audio-slider'); 
+let volume_div = document.querySelector('.volume-slider-div'); 
 let volume_input = document.querySelector('.volume-slider'); 
-// let slider_div = document.querySelector('div.slider-progress'); 
 let slider_container = document.querySelector('div.slider-container'); 
 let slider_body = document.querySelector('div.player-slider'); 
 
 let song_title = document.querySelector(".track-title");
 let play_btn = document.querySelector(".play-btn");
+let volume_btn = document.querySelector(".volume-btn");
 let current_time_span = document.querySelector('.current-time')
 let duration_span = document.querySelector('.duration')
 
@@ -16,7 +17,7 @@ let reset_counter = 0;
 window.addEventListener('load', function () {
 	slider_input.value = 0;
 })
-isIE() ? handleIE() : slider_input.addEventListener('input', changeSlider);
+isIE() ? handleIE() : handleOtherBrowser();
 
 function changeSlider () {
 	reset_counter === 0 ? playSong() : '';
@@ -38,12 +39,6 @@ function playSong () {
 console.log(song)
 console.log(slider_input);
 
-let songs = 
-    [
-        "Ed Sheeran - Give Me Love.mp3",
-        "Ed Sheeran - I See Fire.mp3",
-        "Ed Sheeran - Photograph.mp3"
-    ];
 function togglePlayImg () {
     let img = play_btn.querySelector('img');
     if (song.paused) {
@@ -51,9 +46,6 @@ function togglePlayImg () {
     }else {
         img.src = './assets/imgs/pause.svg';
     }
-}
-function showVolumeRocker() {
-	alert('show volume rocker');
 }
 song.addEventListener('timeupdate', updateTimer);
 
@@ -109,6 +101,38 @@ function isIE () {
 }
 function handleIE () {
 	slider_input.classList.remove('def-slider');
+	volume_input.classList.remove('def-slider');
 	slider_input.classList.add('ie-slider');
-	slider_input.addEventListener('change', changeSlider)
+	volume_input.classList.add('ie-slider');
+	slider_input.addEventListener('change', changeSlider);
+	volume_input.addEventListener('change', adjustVolume);
+
+}
+function handleOtherBrowser () {
+	slider_input.addEventListener('input', changeSlider);
+	volume_input.addEventListener('input', adjustVolume);
+}
+volume_btn.addEventListener('click', toggleVolumeRocker);
+ 
+function toggleVolumeRocker () {
+	if (volume_btn.className.indexOf('px-0') !== -1) {
+		hideVolumeRocker();
+	}else {
+		showVolumeRocker();
+	}
+}
+function showVolumeRocker() {
+	volume_btn.classList.add('px-0');
+	volume_div.style.maxWidth = '60px';
+	volume_div.style.display = 'flex';
+}
+function hideVolumeRocker () {
+	volume_btn.classList.remove('px-0');
+	volume_div.style.maxWidth = '0px';
+	volume_div.style.display = 'none';
+}
+function adjustVolume () {
+	let slider_value = volume_input.value
+	let volume = (slider_value/100)*1;
+	song.volume = volume;
 }
