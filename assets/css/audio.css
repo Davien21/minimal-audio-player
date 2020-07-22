@@ -1,4 +1,7 @@
- 
+* {
+
+	overflow-wrap: anywhere;
+}
 body {
 	/*background-color: #000;*/
 	/*background: linear-gradient(-65deg, #43C6AC, #F8FFAE);*/

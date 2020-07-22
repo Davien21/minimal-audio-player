@@ -136,3 +136,5 @@ function adjustVolume () {
 	let volume = (slider_value/100)*1;
 	song.volume = volume;
 }
+let marquee = document.querySelector('marquee');
+console.dir(marquee)
