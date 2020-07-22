@@ -3,7 +3,6 @@ body {
 	/*background: linear-gradient(-65deg, #43C6AC, #F8FFAE);*/
 }
 main {
-	width: 60%;
 	margin: 15% auto;
 	position: relative;
 }
@@ -74,34 +73,51 @@ main {
 .tiny-svg {
 	width: 20px;
 	height: 20px;
+	margin-top: -5px;
 	cursor: pointer;
+	
 }
+/*.play-btn img {
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+    border: 1px solid;
+    padding: 1px 9px;
+}
+.play-btn img:hover {
+	background-color: antiquewhite;
+	fill: red;
+}*/
 @media screen and (max-width:399px) {
 		
+	main {
+		width: 90%;
+	}
 }
 @media screen and (min-width:400px) {
-	
-
+	main {
+		width: 80%;
+	}
 }
 @media screen and (min-width:576px) {
-	
+	main {
+		width: 50%;
+	}
 }
 @media screen and (min-width:768px) {
 	main {
 		width: 40%;
-		margin: 15% auto;
-		position: relative;
 	}
 
 }
 @media screen and (min-width:992px) {
 	main {
-		width: 35%;
-		margin: 15% auto;
-		position: relative;
+		width: 30%;
 	}
  	
 }	
 @media screen and (min-width:1200px) {
-
+	main {
+		width: 25%;
+	}
 }

@@ -4,15 +4,24 @@ let volume_input = document.querySelector('.volume-slider');
 let slider_container = document.querySelector('div.slider-container'); 
 let slider_body = document.querySelector('div.player-slider'); 
 
-let song_title = document.getElementById(".track-title");
-let play_btn = document.getElementById(".play-btn");
+let song_title = document.querySelector(".track-title");
+let play_btn = document.querySelector(".play-btn");
 let current_time_span = document.querySelector('.current-time')
 let duration_span = document.querySelector('.duration')
 
 let song = new Audio();
 song.src = './assets/audio/Ed Sheeran - Give Me Love.mp3';
+song.controls = true;
 let reset_counter = 0;
-slider_input.oninput = () => {
+slider_input.onchange = (e) => {
+	if(reset_counter === 0) {
+		song.play();
+	}
+	let slider_value = e.target.value;
+	let current_time = convertSliderValueToTime(slider_value);
+	console.log(current_time)
+	setTime(current_time);
+
 
 }
 volume_input.oninput = () => {
@@ -51,11 +60,11 @@ song.ontimeupdate = () => {
     let position = song.currentTime / song.duration;
     slider_input.value = position * 100;
     // current_time_span.innerText = song.currentTime;
-    setTime();
+    setTime(song.currentTime);
 }
-function setTime() {
+function setTime(rawTime) {
   // let hours = Math.floor(song.currentTime / 3600);
-  current_time_span.innerText = formatted_time(song.currentTime);
+  current_time_span.innerText = formatted_time(rawTime);
   // console.log(minutes);
   // console.log(seconds);
 }
@@ -70,6 +79,25 @@ function formatted_time (rawTime) {
 function startNewTrack () {
 	if (reset_counter === 0) {
 		duration_span.innerText = formatted_time(song.duration);
+		song_title.innerText = getSongTitle(song.attributes[1].value);
 		reset_counter++;
 	}
 }
+song.onended = () => {
+	let img = play_btn.querySelector('img');
+	img.src = './assets/imgs/play.svg'
+}
+function convertSliderValueToTime (input) {
+	let time = (input*song.duration)/100;
+	song.currentTime = time;
+	return time;
+}
+function getSongTitle (srcValue) {
+	if(srcValue.includes('/') !==true) {
+		return srcValue;
+	}else {
+		title = srcValue.slice(srcValue.lastIndexOf('/')+1);
+		return title;
+	}
+}
+console.log(getSongTitle('./assets/imgs/play.svg'))
