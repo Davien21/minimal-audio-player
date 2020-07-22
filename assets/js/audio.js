@@ -13,30 +13,25 @@ let song = new Audio();
 song.src = './assets/audio/Ed Sheeran - Give Me Love.mp3';
 song.controls = true;
 let reset_counter = 0;
-slider_input.onchange = (e) => {
-	if(reset_counter === 0) {
-		playSong ();
-	}
-	let slider_value = e.target.value;
+window.addEventListener('load', function () {
+	slider_input.value = 0;
+})
+isIE() ? handleIE() : slider_input.addEventListener('input', changeSlider);
+
+function changeSlider () {
+	reset_counter === 0 ? playSong() : '';
+	let slider_value = slider_input.value;
 	let current_time = convertSliderValueToTime(slider_value);
-	console.log(current_time)
 	setTime(current_time);
-
-
 }
-volume_input.oninput = () => {
 
-}
+ 
 function playSong () {
 	if (song.src === '') {
 		song_title.innerText = 'No Track Loaded';
 		return;
 	}
-	if (song.paused) {
-		song.play();
-	}else {
-		song.pause();
-	}
+	song.paused ? song.play() : song.pause();
 	togglePlayImg();
 	startNewTrack()
 }
@@ -60,48 +55,60 @@ function togglePlayImg () {
 function showVolumeRocker() {
 	alert('show volume rocker');
 }
-song.ontimeupdate = () => {
+song.addEventListener('timeupdate', updateTimer);
+
+function updateTimer () {
     let position = song.currentTime / song.duration;
     slider_input.value = position * 100;
-    // current_time_span.innerText = song.currentTime;
     setTime(song.currentTime);
 }
 function setTime(rawTime) {
-  // let hours = Math.floor(song.currentTime / 3600);
   current_time_span.innerText = formatted_time(rawTime);
-  // console.log(minutes);
-  // console.log(seconds);
 }
 function formatted_time (rawTime) {
 	let minutes = Math.floor(rawTime / 60);
 	let seconds = Math.floor(rawTime - minutes * 60);
 	let minuteValue;
-	let secs = seconds<10 ? "0"+seconds:seconds;
-	let mins = minutes<10 ? "0"+minutes:minutes;
-	return output = `${mins}:${secs}`;
+	let secs = seconds <10 ? "0"+seconds:seconds;
+	let mins = minutes <10 ? "0"+minutes:minutes;
+	return output = mins +":"+secs;
 }
 function startNewTrack () {
 	if (reset_counter === 0) {
 		duration_span.innerText = formatted_time(song.duration);
-		song_title.innerText = getSongTitle(song.attributes[1].value);
+		// console.log(song.src);
+		song_title.innerText = getSongTitle(song.src);
 		reset_counter++;
 	}
 }
-song.onended = () => {
+song.addEventListener('ended', function(){
 	let img = play_btn.querySelector('img');
 	img.src = './assets/imgs/play.svg'
-}
+})
+
 function convertSliderValueToTime (input) {
 	let time = (input*song.duration)/100;
 	song.currentTime = time;
 	return time;
 }
 function getSongTitle (srcValue) {
-	if(srcValue.includes('/') !==true) {
+	if(srcValue.indexOf('/') == -1) {
 		return srcValue;
 	}else {
 		title = srcValue.slice(srcValue.lastIndexOf('/')+1);
+		title = charToWhiteSpace(title);
 		return title;
 	}
 }
-console.log(getSongTitle('./assets/imgs/play.svg'))
+function charToWhiteSpace (value) {
+	return value.replace(/%20/g, " ");
+}
+function isIE () {
+	let isIE = /*@cc_on!@*/false || !!document.documentMode;
+	return isIE;
+}
+function handleIE () {
+	slider_input.classList.remove('def-slider');
+	slider_input.classList.add('ie-slider');
+	slider_input.addEventListener('change', changeSlider)
+}
