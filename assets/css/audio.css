@@ -40,11 +40,12 @@ main {
 	outline: none;
 	border:none;
 	background: #2196F3;
+	background: url('../imgs/play.svg');
 	width: 13px;
 	height: 13px;
 	cursor: pointer;
 	/*z-index: 3;*/
-	border-radius: 50%;
+	/*border-radius: 50%;*/
 	 
 }
 .ie-slider {
