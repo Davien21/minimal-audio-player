@@ -34,6 +34,11 @@ main {
 	border-radius: 30px;
 	cursor: pointer;
 }
+.volume-slider {
+	width: 60px;
+
+}
+@keyframe
 .def-slider::-webkit-slider-thumb,.def-slider::-moz-range-thumb  {
 	-webkit-appearance: none;
   	appearance: none;
@@ -47,6 +52,7 @@ main {
 	border-radius: 50%;
 	 
 }
+
 .ie-slider {
 	cursor: pointer;
 	margin-top: -10px;
@@ -75,9 +81,9 @@ main {
 	box-shadow: 0px -0.05px 0.15px 0.15px #EAEAEA;
 }
 .tiny-svg {
-	width: 20px;
-	height: 20px;
-	margin-top: -5px;
+	width: 15px;
+	height: 15px;
+	/*margin-top: -8px;*/
 	cursor: pointer;
 
 }
