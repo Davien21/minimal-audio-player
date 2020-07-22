@@ -15,7 +15,7 @@ song.controls = true;
 let reset_counter = 0;
 slider_input.onchange = (e) => {
 	if(reset_counter === 0) {
-		song.play();
+		playSong ();
 	}
 	let slider_value = e.target.value;
 	let current_time = convertSliderValueToTime(slider_value);
@@ -27,13 +27,17 @@ slider_input.onchange = (e) => {
 volume_input.oninput = () => {
 
 }
-function playSong (btn) {
+function playSong () {
+	if (song.src === '') {
+		song_title.innerText = 'No Track Loaded';
+		return;
+	}
 	if (song.paused) {
 		song.play();
 	}else {
 		song.pause();
 	}
-	togglePlayImg(btn);
+	togglePlayImg();
 	startNewTrack()
 }
 console.log(song)
@@ -45,9 +49,9 @@ let songs =
         "Ed Sheeran - I See Fire.mp3",
         "Ed Sheeran - Photograph.mp3"
     ];
-function togglePlayImg (btn) {
-    let img = btn.querySelector('img');
-    if (img.src.includes('pause')) {
+function togglePlayImg () {
+    let img = play_btn.querySelector('img');
+    if (song.paused) {
         img.src = './assets/imgs/play.svg';
     }else {
         img.src = './assets/imgs/pause.svg';
