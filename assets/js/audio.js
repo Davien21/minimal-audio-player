@@ -26,7 +26,7 @@ function changeSlider () {
 	setTime(current_time);
 }
 
- 
+play_btn.addEventListener('click', playSong);
 function playSong () {
 	if (song.src === '') {
 		song_title.innerText = 'No Track Loaded';
@@ -136,5 +136,5 @@ function adjustVolume () {
 	let volume = (slider_value/100)*1;
 	song.volume = volume;
 }
-let marquee = document.querySelector('marquee');
-console.dir(marquee)
+// let marquee = document.querySelector('marquee');
+// console.dir(marquee)

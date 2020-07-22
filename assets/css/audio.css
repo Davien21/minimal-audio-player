@@ -37,6 +37,7 @@ main {
 }
 .volume-slider-div {
 	display: none;
+	width: 60px;
 	max-width: 60px;
 }
  
